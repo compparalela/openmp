@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<omp.h>
+
+int main(){
+   #pragma omp parallel shared (a,b,c,n) private(id, i)
+   {
+      #pragma omp for
+      for(i = 0; i < n; i++){
+         c[i] = a[i] + b[i];
+	 printf("Thread %d executa a iteração %d do loop\n", id, i);
+      }
+   }
+}
