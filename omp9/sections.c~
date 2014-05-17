@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<omp.h>
+
+int main(){
+
+   int i;
+
+   #pragma omp parallel
+   {
+   #pragma omp sections
+   {
+      
+      #pragma omp section
+      {
+         printf("Thread %d executando.\n", omp_get_thread_num());
+         for(i = 0; i < 3; i++)
+            printf("Hello\n");
+      }
+
+      
+      #pragma omp section
+      {
+         printf("Thread %d executando.\n", omp_get_thread_num());
+         for(i = 3; i < 8; i++)
+            printf("Hello\n");
+      }
+
+      
+      #pragma omp section
+      {
+         printf("Thread %d executando.\n", omp_get_thread_num());
+         for(i = 8; i < 10; i++)
+            printf("Hello\n");
+      }
+
+   }
+   }
+
+}
